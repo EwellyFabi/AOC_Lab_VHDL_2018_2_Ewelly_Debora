@@ -1,0 +1,39 @@
+Library ieee;
+use ieee.std_logic_1164.all;
+
+Entity Mux is
+	Port(
+		A, B, C, D, S0, S1: IN STD_LOGIC;
+		Saida : OUT STD_LOGIC
+		);
+	END Mux;
+
+Architecture behavior of Mux is
+
+COMPONENT MAnd is
+	Port(
+		A, B, C: IN STD_LOGIC;
+		Result : OUT STD_LOGIC
+		);
+End COMPONENT;
+
+COMPONENT MOr is
+	Port(
+		A, B, C: IN STD_LOGIC;
+		Result : OUT STD_LOGIC
+		);
+End COMPONENT;
+
+SIGNAL signal_result1: STD_LOGIC;
+SIGNAL signal_result2: STD_LOGIC;
+SIGNAL signal_result3: STD_LOGIC;
+SIGNAL signal_result4: STD_LOGIC;
+
+BEGIN
+
+	G1: MAnd PORT MAP(A, S, signal_result1);
+	G2: MAnd PORT MAP(B, NOT(S), signal_result2);
+	G3: MOr PORT MAP(signal_result1, signal_result2, Saida);
+	
+	
+END behavior;
