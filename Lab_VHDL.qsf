@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CGXFC7C7F23C8
-set_global_assignment -name TOP_LEVEL_ENTITY ROM_16_V
+set_global_assignment -name TOP_LEVEL_ENTITY Somador_16
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:52:02  OCTOBER 18, 2018"
 set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
@@ -49,19 +49,31 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name VHDL_FILE ROM_16.vhd
 set_global_assignment -name VHDL_FILE MUX_4.vhd
 set_global_assignment -name VHDL_FILE NOT_1.vhd
-set_global_assignment -name VECTOR_WAVEFORM_FILE WaveformMux.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_global_assignment -name VHDL_FILE MXor.vhd
 set_global_assignment -name VHDL_FILE MOr.vhd
 set_global_assignment -name VHDL_FILE MAnd.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform1.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform2.vwf
-set_global_assignment -name VHDL_FILE ROM_16_V.vhd
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform3.vwf
 set_global_assignment -name VHDL_FILE Somador_16.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform4.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform5.vwf
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VECTOR_WAVEFORM_FILE WaveformROM.vwf
+set_global_assignment -name VHDL_FILE Unidade_de_controle.vhd
+set_global_assignment -name VHDL_FILE And_16.vhd
+set_global_assignment -name VHDL_FILE Or_16.vhd
+set_global_assignment -name VHDL_FILE Not_16.vhd
+set_global_assignment -name VHDL_FILE Xor_16.vhd
+set_global_assignment -name VHDL_FILE LeftShift_2_16.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform6.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform7.vwf
+set_global_assignment -name VHDL_FILE RigthShift_2_16.vhd
+set_global_assignment -name VHDL_FILE Extender8to16.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
