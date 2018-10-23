@@ -3,8 +3,8 @@ use ieee.std_logic_1164.all;
 
 Entity Xor_16 is
 	Port(
-		A, B : IN STD_LOGIC_VECTOR(15 downto 0);
-		Saida : OUT STD_LOGIC_VECTOR(15 downto 0)
+		A, B : IN STD_LOGIC;
+		Result : OUT STD_LOGIC
 		);
 	End Xor_16;
 
@@ -31,17 +31,16 @@ COMPONENT Not_16 is
 		);
 End COMPONENT;
 
-SIGNAL Negado1: STD_LOGIC_VECTOR(15 downto 0);
-SIGNAL Negado2: STD_LOGIC_VECTOR(15 downto 0);
-SIGNAL signal_result1: STD_LOGIC_VECTOR(15 downto 0);
-SIGNAL signal_result2: STD_LOGIC_VECTOR(15 downto 0);
+
+SIGNAL signal_result1: STD_LOGIC;
+SIGNAL signal_result2: STD_LOGIC;
 
 BEGIN
 
-	Inv1: NOT_16 PORT MAP((A), Negado1);
-	Inv2: NOT_16 PORT MAP((B), Negado2);
-	G1: And_16 PORT MAP(A, Negado2, signal_result1);
-	G2: And_16 PORT MAP(Negado1, B, signal_result2);
-	G3: Or_16 PORT MAP(signal_result1, signal_result2, Saida);
+	Inv1: NOT PORT MAP((A), Negado);
+	Inv2: NOT PORT MAP((B), Negado);
+	G1: And_16 PORT MAP(A, NOT(B), signal_result1);
+	G2: And_16 PORT MAP(NOT(A), B, signal_result2);
+	G3: MOr PORT MAP(signal_result1, signal_result2, Result);
 	
 END behavior;

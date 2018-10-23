@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 Entity Somador_16 is
 	Port(
 		A, B : IN STD_LOGIC_VECTOR(15 downto 0);
-		isSubt : IN STD_LOGIC;
+		negate : IN STD_LOGIC;
 		cout : OUT STD_LOGIC;
 		saida : OUT STD_LOGIC_VECTOR(15 downto 0)
 		);
@@ -14,21 +14,21 @@ End Somador_16;
 Architecture somador of Somador_16 is
 BEGIN
 
-	process(A,B,isSubt)
+	process(A,B,negate)
 	variable temp, BorNotB: STD_LOGIC_VECTOR(15 downto 0);
 	variable C : STD_LOGIC;
 	
 	BEGIN 
 	
 	-- SE  FOR SUBTRAÇÃO NEGA O B
-	if (isSubt = '1') then
+	if (negate = '1') then
 		BorNotB :=  NOT B;
 	else
 		BorNotB :=  B;
 	end if;
 	
 	
-	C := isSubt;
+	C := negate;
 	
 	-- REALIZA A SOMA OU SUBTRAÇÃO
 	for i in 0 to 15 loop
