@@ -4,33 +4,42 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY Maquina_estados IS 
 PORT(
-		Clock, X: IN STD_LOGIC; 	
-		Saida: OUT STD_LOGIC_VECTOR(1 DOWNTO 0)
+		Clock, X, reset: IN STD_LOGIC; 	
+		Saida: OUT STD_LOGIC_VECTOR (1 downto 0)
 );
 END Maquina_estados;
 
-ARCHITECTURE behavior OF Maquina_estados IS
+ARCHITECTURE RTL OF Maquina_estados IS
 
 	TYPE tipo_estado IS (A, B, C, D);
-	signal estado: tipo_estado:= A;
+	signal estado: tipo_estado;
 
 	BEGIN 
-		process(Clock, X) begin
+		process(Clock, reset) begin
 		
-			if Clock = '1' then
+			if reset = '1' then
+				estado <= A;
+				
+			ELSIF rising_edge(clock) THEN
 					case estado is
 						when A =>
-							estado <= B;
+							if X = '1' then
+								estado <= B;
 							-- Saida <= "01";
-						
+							end if;
+							
 						when B =>
-							estado <= C;
+							if X = '1' then
+								estado <= C;
 							-- Saida <= "10";
+							end if;
 							
 						when C =>
-							estado <= D;
+							if X = '1' then
+								estado <= D;
 							-- Saida <= "11";
-				
+							end if;
+							
 						when D =>
 							if X = '1' then
 									estado <= B;
@@ -39,6 +48,8 @@ ARCHITECTURE behavior OF Maquina_estados IS
 									estado <= A;
 									-- Saida <= "00"
 							end if;
+						when others =>
+							estado <= A;
 							
 					end case;
 				
@@ -46,10 +57,10 @@ ARCHITECTURE behavior OF Maquina_estados IS
 				
 		end process;
 		
-		WITH estado SELECT  --DECODIFICA ESTADO
-			Saida <= "00" when A, 
+		WITH estado SELECT 
+			Saida <= "00" when A,
 						"01" when B,
 						"10" when C,
 						"11" when D;
 		
-END behavior;	
+END RTL;	
